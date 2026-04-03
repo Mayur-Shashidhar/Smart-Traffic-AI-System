@@ -1,7 +1,7 @@
 # 🚗 Smart Traffic AI System (YOLOv8 + DeepSORT)
 
 A complete **Computer Vision pipeline** for real-time traffic analysis, built using **YOLOv8** and **DeepSORT**.
-This system performs **vehicle detection, tracking, counting, direction analysis, and speed estimation**.
+This system performs **vehicle detection, tracking, counting, direction analysis and speed estimation**.
 
 ---
 
