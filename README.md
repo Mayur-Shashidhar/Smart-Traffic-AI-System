@@ -1,7 +1,7 @@
 # 🚗 Smart Traffic AI System (YOLOv8 + DeepSORT)
 
 A complete **Computer Vision pipeline** for real-time traffic analysis, built using **YOLOv8** and **DeepSORT**.
-This system performs **vehicle detection, tracking, counting, direction analysis and speed estimation**.
+This system performs **vehicle detection, tracking, counting, direction analysis, speed estimation, and model evaluation**.
 
 ---
 
@@ -13,6 +13,7 @@ This system performs **vehicle detection, tracking, counting, direction analysis
 * 🔄 Direction Detection (UP / DOWN)
 * ⚡ Speed Estimation (per vehicle)
 * 📊 Real-time GUI + Terminal Logs
+* 📈 **Model Accuracy Comparison (YOLOv8n vs YOLOv8x)**
 
 ---
 
@@ -31,7 +32,7 @@ Direction Detection
    ↓
 Vehicle Counting
    ↓
-Speed Estimation
+Speed Estimation / Accuracy Evaluation
 ```
 
 ---
@@ -41,10 +42,9 @@ Speed Estimation
 ```
 traffic-ai/
 │
-├── main.py              # Final main file
-├── yolov8n.pt           # YOLO model
+├── main.py              # Base system (detection + tracking + speed)
+├── accuracy.py          # Model comparison + accuracy evaluation
 ├── video.mp4            # Input video
-├── venv/                # Virtual environment
 ```
 
 ---
@@ -77,22 +77,50 @@ pip install ultralytics opencv-python deep-sort-realtime numpy
 
 ---
 
-### 4️⃣ Add Required Files
+## 📦 Model Weights (IMPORTANT)
 
-Make sure you have:
+Model weights are **NOT included in this repository** due to GitHub size limits.
 
-```
-yolov8n.pt
-fixed.mp4
-```
+They will be **automatically downloaded** when you run the code using
+Ultralytics.
+
+### Models Used:
+
+* `yolov8n.pt` → Fast model (Model A)
+* `yolov8x.pt` → Accurate model (Model B)
+
+No manual download required ✅
 
 ---
 
 ## ▶️ Run the Project
 
+### 🔹 Base System
+
 ```
 python main.py
 ```
+
+👉 Includes:
+
+* Detection
+* Tracking
+* Counting
+* Speed estimation
+
+---
+
+### 🔹 Accuracy System (NEW)
+
+```
+python accuracy.py
+```
+
+👉 Includes:
+
+* Dual model comparison
+* Unique vehicle counting
+* Accuracy calculation
 
 ---
 
@@ -102,15 +130,25 @@ python main.py
 
 * Vehicle bounding boxes
 * Unique tracking IDs
-* Speed (km/h) per vehicle
 * Counting zone
-* UP / DOWN / TOTAL counters
+* Model A vs Model B counts
 
 ### 🧾 Terminal Logs:
 
 ```
-DOWN ID 7 Speed: 54
-DOWN ID 12 Speed: 48
+--- Frame 32 ---
+A COUNT → ID 7
+B COUNT → ID 9
+Running Total → A: 12 | B: 14
+```
+
+### 📊 Final Report:
+
+```
+Model A: 27
+Model B: 26
+Difference: 1
+Accuracy: 96.29%
 ```
 
 ---
@@ -120,9 +158,11 @@ DOWN ID 12 Speed: 48
 ### 📍 Counting Line
 
 ```
-LINE_Y = 250
+LINE_Y = 150
 OFFSET = 25
 ```
+
+---
 
 ### ⚡ Speed Calibration
 
@@ -130,14 +170,15 @@ OFFSET = 25
 PIXEL_TO_METER = 0.02
 ```
 
-> ⚠️ Adjust this value to match realistic speeds.
+> ⚠️ Adjust for realistic speeds based on camera setup.
 
 ---
 
 ## ⚠️ Limitations
 
 * Speed estimation is **approximate** (no real-world calibration)
-* Accuracy depends on:
+* Accuracy is **relative (model vs model)**, not absolute ground truth
+* Performance depends on:
 
   * Camera angle
   * Video quality
@@ -154,6 +195,7 @@ PIXEL_TO_METER = 0.02
 | Counting         | ✅ Accurate          |
 | Direction        | ✅ Correct           |
 | Speed Estimation | ⚠️ Approximate      |
+| Accuracy Eval    | ✅ Relative          |
 
 ---
 
@@ -163,7 +205,8 @@ PIXEL_TO_METER = 0.02
 * 📊 Dashboard (Streamlit / React)
 * 🪖 Helmet Detection
 * ⚡ Real-world calibration
-* 📈 Data export (CSV / Database)
+* 📈 CSV / Database logging
+* 📉 Precision / Recall evaluation
 
 ---
 
@@ -186,4 +229,6 @@ PIXEL_TO_METER = 0.02
 
 ## 📌 Final Note
 
-This project demonstrates a **complete real-world computer vision pipeline**, combining detection, tracking, analytics, and estimation into a single system.
+This project demonstrates a **complete real-world computer vision pipeline**, combining detection, tracking, analytics, and evaluation into a single system.
+
+It evolves from a basic detection system (`main.py`) to a **self-evaluating AI pipeline (`accuracy.py`)**, showcasing practical ML engineering workflows.
