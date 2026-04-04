@@ -77,7 +77,7 @@ pip install ultralytics opencv-python deep-sort-realtime numpy
 
 ---
 
-## 📦 Model Weights (IMPORTANT)
+## 📦 Model Weights
 
 Model weights are **NOT included in this repository** due to GitHub size limits.
 
