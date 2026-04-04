@@ -34,6 +34,7 @@ Vehicle Counting
    ↓
 Speed Estimation / Accuracy Evaluation
 ```
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/c03a5f8a-5ef5-4dfa-bb6b-33a6858f0154" />
 
 ---
 
