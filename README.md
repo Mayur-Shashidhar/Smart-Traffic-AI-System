@@ -110,7 +110,7 @@ python main.py
 
 ---
 
-### 🔹 Accuracy System (NEW)
+### 🔹 Accuracy System
 
 ```
 python accuracy.py
