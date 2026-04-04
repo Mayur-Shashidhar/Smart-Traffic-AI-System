@@ -8,7 +8,7 @@ def main():
     model_A = YOLO("yolov8n.pt")   # fast
     model_B = YOLO("yolov8x.pt")   # accurate
 
-    video_path = "fixed.mp4"
+    video_path = "video.mp4"
     cap = cv2.VideoCapture(video_path, cv2.CAP_AVFOUNDATION)
 
     if not cap.isOpened():
