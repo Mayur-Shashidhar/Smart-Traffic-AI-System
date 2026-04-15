@@ -233,3 +233,11 @@ PIXEL_TO_METER = 0.02
 This project demonstrates a **complete real-world computer vision pipeline**, combining detection, tracking, analytics, and evaluation into a single system.
 
 It evolves from a basic detection system (`main.py`) to a **self-evaluating AI pipeline (`accuracy.py`)**, showcasing practical ML engineering workflows.
+
+---
+
+## Dependencies & Licenses
+
+This project uses third-party libraries and models including YOLOv8 and DeepSORT.
+
+These components are subject to their respective licenses.
